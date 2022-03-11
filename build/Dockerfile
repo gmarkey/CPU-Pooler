@@ -17,7 +17,6 @@ RUN go build -a -ldflags '-extldflags "-static"' -o cpu-device-plugin ${PLUGIN_P
 
 # Final image creation
 FROM alpine:latest
-FROM scratch
 ARG PLUGIN_PATH=github.com/nokia/CPU-Pooler
 
 RUN apk add --no-cache util-linux
