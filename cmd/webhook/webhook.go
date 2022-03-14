@@ -14,7 +14,7 @@ import (
 
 	"github.com/golang/glog"
 	"github.com/nokia/CPU-Pooler/pkg/types"
-	"k8s.io/api/admission/v1beta1"
+	"k8s.io/api/admission/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -52,8 +52,8 @@ type patch struct {
 	Value json.RawMessage `json:"value"`
 }
 
-func toAdmissionResponse(err error) *v1beta1.AdmissionResponse {
-	return &v1beta1.AdmissionResponse{
+func toAdmissionResponse(err error) *v1.AdmissionResponse {
+	return &v1.AdmissionResponse{
 		Result: &metav1.Status{
 			Message: err.Error(),
 		},
@@ -297,7 +297,7 @@ func patchVolumesForPinning(patchList []patch) []patch {
 	return patchList
 }
 
-func mutatePods(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
+func mutatePods(ar v1.AdmissionReview) *v1.AdmissionResponse {
 	glog.V(2).Info("mutating pods")
 	var (
 		patchList         []patch
@@ -319,7 +319,7 @@ func mutatePods(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 		glog.Error(err)
 		return toAdmissionResponse(err)
 	}
-	reviewResponse := v1beta1.AdmissionResponse{}
+	reviewResponse := v1.AdmissionResponse{}
 
 	annotationName := annotationNameFromConfig()
 
@@ -411,7 +411,7 @@ func mutatePods(ar v1beta1.AdmissionReview) *v1beta1.AdmissionResponse {
 			return toAdmissionResponse(err)
 		}
 		reviewResponse.Patch = []byte(patch)
-		pt := v1beta1.PatchTypeJSONPatch
+		pt := v1.PatchTypeJSONPatch
 		reviewResponse.PatchType = &pt
 	}
 
@@ -433,9 +433,9 @@ func serveMutatePod(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	requestedAdmissionReview := v1beta1.AdmissionReview{}
+	requestedAdmissionReview := v1.AdmissionReview{}
 
-	responseAdmissionReview := v1beta1.AdmissionReview{}
+	responseAdmissionReview := v1.AdmissionReview{}
 
 	deserializer := codecs.UniversalDeserializer()
 	if _, _, err := deserializer.Decode(body, nil, &requestedAdmissionReview); err != nil {
