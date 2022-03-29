@@ -23,7 +23,7 @@ import (
 )
 
 var (
-	resourceBaseName = "nokia.k8s.io"
+	resourceBaseName = "auros.k8s.io"
 	cdms             []*cpuDeviceManager
 )
 

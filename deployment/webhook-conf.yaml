@@ -4,7 +4,7 @@ kind: MutatingWebhookConfiguration
 metadata:
   name: cpu-device-pod-mutator-webhook-config
 webhooks:
-  - name: cpu-dev-mutator.nokia.k8s.io
+  - name: cpu-dev-mutator.auros.k8s.io
     clientConfig:
       service:
         name: cpu-dev-pod-mutator-svc

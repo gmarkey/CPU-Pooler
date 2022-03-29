@@ -28,8 +28,8 @@ func readCPUAnnotation() ([]types.Container, error) {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		str := scanner.Text()
-		if strings.Contains(str, "nokia.k8s.io/cpus=") {
-			ann = strings.Replace(str, "nokia.k8s.io/cpus=", "", 1)
+		if strings.Contains(str, "auros.k8s.io/cpus=") {
+			ann = strings.Replace(str, "auros.k8s.io/cpus=", "", 1)
 			break
 		}
 	}

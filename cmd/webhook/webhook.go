@@ -31,7 +31,7 @@ const (
 var (
 	scheme             = runtime.NewScheme()
 	codecs             = serializer.NewCodecFactory(scheme)
-	resourceBaseName   = "nokia.k8s.io"
+	resourceBaseName   = "auros.k8s.io"
 	processStarterPath = "/opt/bin/process-starter"
 	certFile           string
 	keyFile            string
