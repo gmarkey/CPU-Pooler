@@ -1,6 +1,6 @@
 # Build stage
 FROM golang:1.16.6-alpine3.14 AS build-env
-ARG PLUGIN_PATH=github.com/nokia/CPU-Pooler
+ARG PLUGIN_PATH=github.com/gmarkey/CPU-Pooler
 
 RUN apk add curl git
 WORKDIR ${GOPATH}/src/${PLUGIN_PATH}
@@ -17,7 +17,7 @@ RUN go build -a -ldflags '-extldflags "-static"' -o cpu-device-plugin ${PLUGIN_P
 
 # Final image creation
 FROM alpine:latest
-ARG PLUGIN_PATH=github.com/nokia/CPU-Pooler
+ARG PLUGIN_PATH=github.com/gmarkey/CPU-Pooler
 
 RUN apk add --no-cache util-linux
 

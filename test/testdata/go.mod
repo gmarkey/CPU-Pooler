@@ -2,6 +2,6 @@
 // Without this file go 1.13 mod cannot get cpu-pooler as dependency
 // Error: malformed file path ...: double dot
 // Fixed in v1.14
-module github.com/nokia/CPU-Pooler
+module github.com/gmarkey/CPU-Pooler
 
 go 1.13

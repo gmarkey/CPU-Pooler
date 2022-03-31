@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/nokia/CPU-Pooler/pkg/types"
+	"github.com/gmarkey/CPU-Pooler/pkg/types"
 	"golang.org/x/sys/unix"
 	"k8s.io/kubernetes/pkg/kubelet/cm/cpuset"
 )

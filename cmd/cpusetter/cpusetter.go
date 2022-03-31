@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"github.com/nokia/CPU-Pooler/pkg/sethandler"
-	"github.com/nokia/CPU-Pooler/pkg/types"
+	"github.com/gmarkey/CPU-Pooler/pkg/sethandler"
+	"github.com/gmarkey/CPU-Pooler/pkg/types"
 	"log"
 	"os"
 	"os/signal"

@@ -3,7 +3,7 @@ package types
 import (
 	"fmt"
 	"github.com/golang/glog"
-	"github.com/nokia/CPU-Pooler/pkg/k8sclient"
+	"github.com/gmarkey/CPU-Pooler/pkg/k8sclient"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"k8s.io/kubernetes/pkg/kubelet/cm/cpuset"

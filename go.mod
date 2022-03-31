@@ -1,4 +1,4 @@
-module github.com/nokia/CPU-Pooler
+module github.com/gmarkey/CPU-Pooler
 
 go 1.15
 

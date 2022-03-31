@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/golang/glog"
-	"github.com/nokia/CPU-Pooler/pkg/types"
+	"github.com/gmarkey/CPU-Pooler/pkg/types"
 	"k8s.io/api/admission/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

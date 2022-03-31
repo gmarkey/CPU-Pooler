@@ -14,8 +14,8 @@ import (
 
 	"github.com/fsnotify/fsnotify"
 	"github.com/golang/glog"
-	"github.com/nokia/CPU-Pooler/pkg/topology"
-	"github.com/nokia/CPU-Pooler/pkg/types"
+	"github.com/gmarkey/CPU-Pooler/pkg/topology"
+	"github.com/gmarkey/CPU-Pooler/pkg/types"
 	"golang.org/x/net/context"
 	grpc "google.golang.org/grpc"
 	pluginapi "k8s.io/kubelet/pkg/apis/deviceplugin/v1beta1"

@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/nokia/CPU-Pooler/pkg/sethandler"
-	"github.com/nokia/CPU-Pooler/pkg/types"
-	"github.com/nokia/CPU-Pooler/test/utils"
+	"github.com/gmarkey/CPU-Pooler/pkg/sethandler"
+	"github.com/gmarkey/CPU-Pooler/pkg/types"
+	"github.com/gmarkey/CPU-Pooler/test/utils"
 	"k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
