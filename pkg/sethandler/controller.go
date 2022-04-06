@@ -44,7 +44,7 @@ var (
 	processConfigKey       = resourceBaseName + "/cpus"
 	setterAnnotationSuffix = "cpusets-configured"
 	setterAnnotationKey    = resourceBaseName + "/" + setterAnnotationSuffix
-	containerPrefixList    = []string{"docker://", "containerd://"}
+        containerPrefixList    = []string{"docker://", "containerd://", "cri-o://"}
 )
 
 type workItem struct {
