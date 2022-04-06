@@ -405,6 +405,7 @@ func (setHandler *SetHandler) applyCpusetToContainer(podMeta metav1.ObjectMeta, 
 		}
 		if strings.Contains(path, containerID) {
 		        if !(strings.Contains(path, "conmon")) {
+                                log.Printf("INFO: Found cgroupfs path %s for %s", path, containerID)
                                 pathToContainerCpusetFile = path
                                 return filepath.SkipDir
                         }
