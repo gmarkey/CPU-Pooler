@@ -533,7 +533,7 @@ func (setHandler *SetHandler) reconcileContainer(leafCpusets []string, pod v1.Po
 	badCpuset, _ := cpuset.Parse("0-" + strconv.Itoa(numOfCpus-1))
 	for _, leaf := range leafCpusets {
 		if strings.Contains(leaf, containerID) {
-		        if !(strings.Contains(leaf, "conmon") {
+		        if !(strings.Contains(leaf, "conmon")) {
                                 currentCpusetByte, _ := ioutil.ReadFile(leaf + "/cpuset.cpus")
                                 currentCpusetStr := strings.TrimSpace(string(currentCpusetByte))
                                 currentCpuset, _ := cpuset.Parse(currentCpusetStr)
