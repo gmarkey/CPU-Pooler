@@ -272,7 +272,7 @@ func (setHandler *SetHandler) adjustContainerSets(pod v1.Pod, containersToBeSet 
 		if err != nil {
 			return errors.New("correct cpuset for the containers of Pod: " + pod.ObjectMeta.Name + " ID: " + string(pod.ObjectMeta.UID) + " could not be calculated in thread:" + strconv.Itoa(unix.Gettid()) + " because:" + err.Error())
 		}
-                containerID := strings.Replace(determineCid(pod.Status, container.Name), "cri-o://", "crio-", -1)
+		containerID := determineCid(pod.Status, container.Name)
 		if containerID == "" {
 			return errors.New("cannot determine container ID of container: " + container.Name + " in Pod: " + pod.ObjectMeta.Name + " ID: " + string(pod.ObjectMeta.UID) + " in thread:" + strconv.Itoa(unix.Gettid()) + " because:" + err.Error())
 		}
