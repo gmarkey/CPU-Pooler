@@ -405,7 +405,6 @@ func (setHandler *SetHandler) applyCpusetToContainer(podMeta metav1.ObjectMeta, 
 		}
 		if strings.Contains(path, containerID) {
 		        if !(strings.Contains(path, "conmon")) {
-                                log.Printf("INFO: Found cgroupfs path %s for %s", path, containerID)
                                 pathToContainerCpusetFile = path
                                 return filepath.SkipDir
                         }
@@ -534,20 +533,22 @@ func (setHandler *SetHandler) reconcileContainer(leafCpusets []string, pod v1.Po
 	badCpuset, _ := cpuset.Parse("0-" + strconv.Itoa(numOfCpus-1))
 	for _, leaf := range leafCpusets {
 		if strings.Contains(leaf, containerID) {
-			currentCpusetByte, _ := ioutil.ReadFile(leaf + "/cpuset.cpus")
-			currentCpusetStr := strings.TrimSpace(string(currentCpusetByte))
-			currentCpuset, _ := cpuset.Parse(currentCpusetStr)
-			if badCpuset.Equals(currentCpuset) {
-				correctSet, err := setHandler.determineCorrectCpuset(pod, container)
-				if err != nil {
-					return errors.New("could not determine correct cpuset because:" + err.Error())
-				}
-				err = os.WriteFile(leaf+"/cpuset.cpus", []byte(correctSet.String()), 0755)
-				if err != nil {
-					return errors.New("could not overwrite cpuset file:" + leaf + "/cpuset.cpus because:" + err.Error())
-				}
-			}
-			break
+		        if !(strings.Contains(leaf, "conmon") {
+                                currentCpusetByte, _ := ioutil.ReadFile(leaf + "/cpuset.cpus")
+                                currentCpusetStr := strings.TrimSpace(string(currentCpusetByte))
+                                currentCpuset, _ := cpuset.Parse(currentCpusetStr)
+                                if badCpuset.Equals(currentCpuset) {
+                                        correctSet, err := setHandler.determineCorrectCpuset(pod, container)
+                                        if err != nil {
+                                                return errors.New("could not determine correct cpuset because:" + err.Error())
+                                        }
+                                        err = os.WriteFile(leaf+"/cpuset.cpus", []byte(correctSet.String()), 0755)
+                                        if err != nil {
+                                                return errors.New("could not overwrite cpuset file:" + leaf + "/cpuset.cpus because:" + err.Error())
+                                        }
+                                }
+                                break
+                        }
 		}
 	}
 	return nil
