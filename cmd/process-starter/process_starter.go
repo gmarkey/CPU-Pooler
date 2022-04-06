@@ -191,5 +191,6 @@ func main() {
 		}
 	}
 	fmt.Printf("No processes in pod annotation, start process from pod spec command\n")
+        fmt.Printf("%s %s", os.Args[1], os.Args[1:])
 	syscall.Exec(os.Args[1], os.Args[1:], os.Environ())
 }
