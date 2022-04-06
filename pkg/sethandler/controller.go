@@ -404,8 +404,10 @@ func (setHandler *SetHandler) applyCpusetToContainer(podMeta metav1.ObjectMeta, 
 			return err
 		}
 		if strings.Contains(path, containerID) {
-			pathToContainerCpusetFile = path
-			return filepath.SkipDir
+		        if !(strings.Contains(path, "conmon")) {
+                                pathToContainerCpusetFile = path
+                                return filepath.SkipDir
+                        }
 		}
 		return nil
 	})
