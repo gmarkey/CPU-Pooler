@@ -190,6 +190,10 @@ func main() {
 			}
 		}
 	}
-	fmt.Printf("No processes in pod annotation, start process from pod spec command\n")
-	syscall.Exec(os.Args[1], os.Args[1:], os.Environ())
+	fmt.Printf("Affinity configured, starting application\n")
+	err = syscall.Exec(os.Args[1], os.Args[1:], os.Environ())
+	if err != nil {
+          fmt.Printf("Error in execve: %s\n", err)
+          os.Exit(1)
+        }
 }
