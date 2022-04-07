@@ -192,8 +192,10 @@ func main() {
 	}
 	fmt.Printf("No processes in pod annotation, start process from pod spec command\n")
         fmt.Printf("%s %s", os.Args[1], os.Args[2:])
-        r, err := syscall.Exec(os.Args[1], os.Args[2:], os.Environ())
-	if err != nil {
-                glog.Errorf("failed to run process")
-	}
+        cmd := exec.Command(os.args[1], os.Args[2:])
+        err := cmd.Run()
+        if err != nil {
+          fmt.Println("Failed with error: %s", err)
+        }
+        // syscall.Exec(os.Args[1], os.Args[2:], os.Environ())
 }
